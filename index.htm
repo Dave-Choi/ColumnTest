@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+<title>MD5 Mockup</title>
+<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <!--[if IE]>
+      <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+<link rel="stylesheet" href="default.css" />
+</head>
+
+<body>
+<nav id="primaryNav">
+	<ul>
+		<li><a href="#">Blog</a></li>
+		<li><a href="#">Hacks</a></li>
+		<li><a href="#">About</a></li>
+	</ul>
+	<div id="search">
+		<input type="text" value="search" />
+	</div>
+</nav>
+
+<div id="posts">
+	<article>
+		<section>
+			<header><h1>Baby Steps</h1></header>
+			<p>I read this book recently: <a href="http://www.amazon.com/The-Now-Habit-Overcoming-Procrastination/dp/1585425524/ref=dp_ob_title_bk">"The Now Habit: A Strategic Program for Overcoming Procrastination and Enjoying Guilt-Free Play"</a></p>
+
+			<p>It had some good stuff, and some of what it recommends is in line with what I'd already been doing with the Pomodoro Method.  I enjoyed that the book went into the psychological reasons behind procrastination, so you have a better understanding of why it happens, and you can better tailor fixes to avoid it.</p>
+
+			<p>There are a few things that really struck me as applicable to the problems I've had with getting things done.  The really big one is trying to be perfect.  This has been a big problem with my development of this site, and why it's been frozen for years.  After a certain point, I wasn't just improving one thing or another, or throwing together something that might suck.  I was trying to design this monolithic perfect thing.</p>
+
+			<p>What reading that book really made me mindful of is that mediocrity is a necessary step along the path to greatness.  I will have to make shit versions before I get to where I want to be.  I used to not be afraid of making those shit versions, but after a certain point of feeling like I should know what I'm doing, it seemed like it would be too embarassing.</p>
+
+			<p>But great work is done in drafts.</p>
+
+			<p>I'm still working on these single page JS projects, but I wanted to start thinking about the environment in which I'm going to want to present them.</p>
+
+			<p>In college, I minored in communication, and everything besides the introductory course to communication theory (which I took last) was related to human-computer interaction.  Things like usability testing, and interface design.  These are things that I care about a lot.  My motto is: If it's not usable, it's useless.</p>
+
+			<p>I see a lot of bad interfaces, and whenever you design something, I think it helps to think about bad versions of it that you've seen.  Most of the time, you're going to design something because you're not satisfied with what's already out there, or is the state of the art.</p>
+
+			<p>I always say that I'm not a visual designer.  In my freelance work, I try to stress this a lot.  If you're looking for aesthetic flair, it's not coming from me.  I care about solving problems that aren't just, "This looks boring."  I care about making things intuitive, and not making users think about using my stuff.</p>
+
+			<p>That all said, I wanted to write down a few notes about things that bother me about blogs, as I consider design principles to apply to my own.</p>
+		</section>
+
+		<section>
+			<header><h2>Layout and Readability</h2></header>
+			<h3>Problem</h3>
+			<p>Most blogs are presented in huge single columns, which may or may not be paginated (which is never done for the benefit of the user, but so that more ads can be served).  The problem is that the column is either too wide, or makes poor use of available space.</p>
+
+			<p>When text columns are too wide, it's difficult to read them.  Your eye focus goes waaaaay over to the right, and then has to go waaaay back to the left after you complete a line.  During that transition, it's easy to lose your vertical place, and start trying to read the wrong line.  This can interrupt your flow, and make your eyes have to bounce back and forth to resolve the problem, and is just generally shitty.  This is a really common problem when people just let text fill a container, or when column widths are determined by percentage of window width, with no max-width set.</p>
+
+			<p>When a max-width is set, the text is easy to read (assuming an appropriate width that makes each line about 11 words), but on wide displays, the layout just looks bad, and that can be distracting on its own.</p>
+
+			<h3>Possible Approach</h3>
+			<p>Something more akin to newspapers is probably a good idea, with adjacent columns of text.  CSS3 has an option to have text flow from one column into another, which has been painfully missing for a while.  This is nice on its own, but it would need fine tuning, because you probably don't want to end up having to scroll horizontally.  Maybe on touch phones, this is more okay, but it's not a good situation with a scroll dial.</p>
+		</section>
+
+		<section>
+			<header><h2>Position</h2></header>
+			<h3>Problem</h3>
+			<p>A lot of blogs have comments displayed below the post.  This creates a problem when you're reading a long post, and you have no idea how close to done you are.  You've been reading for 20 minutes and see the scrollbar about 15% down the side, and you don't know if it's because the post is a mile long, or if there are a million unpaginated comments.  So you scroll all the way down, see where the post ends, and then you scroll all the way back up, and hope you didn't forget where you were.  This is awful.</p>
+
+			<h3>Possible Approach</h3>
+			<p>There's an interface element that's been showing up on embedded video a lot, where there's a thin, colored progress bar on one of the edges of the video, that gives you a good idea of how far along you are at a glance.  I think articles need this, and probably individual sections of articles, too.  I'll have to think some more about granularity.</p>
+
+			<p>Another thing is that if you write like a book and put it on an HTML page, you need a position:fixed table of contents.  If you don't have one, <a href="http://emberjs.com/documentation/">you're an asshole</a>.  Seriously, if you can float a "back to top" link, you can float the whole table.</p>
+		</section>
+
+		<section>
+			<header><h2>Post Context</h2></header>
+			<p>If there are multiple posts or something on a page, you should always know what post you're reading.  That information with the post title should just always been on screen, so if I have to get up for a while and I come back, I can tell at a glance what this was about.  This is the same sort of deal with the table of contents.  It should be position:fixed on screen.  I'm not going to bother writing the "Possible Approach" section for this.</p>
+		</section>
+
+		<section>
+			<header><h2>Comment Context</h2></header>
+			<h3>Problem</h3>
+			<p>Whenever people enable comments to be responses to other comments, it's a god damn mess.  Either they nest them, by indenting the response, or they just leave a link to the original comment in the response comment.</p>
+
+			<p>When you indent them, there's always a point where it just looks like shit, and you can't trace what level of depth a comment is in.  Reddit is a prime example of this.  Their workaround is stupendously dumb, linking deep levels to a new page.  Furthermore, even on the same page, it's hard to see what's a response to what.  This could be mitigated by zebra striping (i.e. alternating styles, like they do to HTML tables a lot, so it's easier to follow a row), but that's not a complete solution.</p>
+
+			<p>When you just have a link to the original comment, you lose your sense of hierarchy.  It's just not there.  Everything's flat in the layout, and you can't tell which comments sparked the conversation, and the good comments are mixed in with every other stupid comment.</p>
+
+			<h3>Possible Approach</h3>
+			<p>I don't really like this trend, but I think this is also solved by position:fixed floating stuff.  I think something like a limited depth breadcrumb trail, maybe rotated and placed on the left edge.  CSS lets you do that shit now.</p>
+		</section>
+
+		<section>
+			<header><h2>Relevance Context</h2></header>
+			<p>A lot of blog posts show author and other publication information at the bottom of the post.  Pretty much 100% of the time, I need to know that stuff to decide if it's worth my time to read it.  It's very common to be looking for a solution to a technology problem, and have search results return blog posts.  The problem is that I may care who the author is, and I ABSOLUTELY care about when it was written.  I don't need a blog post from 2002 telling me about ... basically anything about web development.</p>
+
+			<p>This stuff should just always be at the top, and maybe always on screen, like the title.</p>
+		</section>
+
+		<section>
+			<p>Overall, what I'm worried about is that I'm going to try to keep too much stuff on screen at once, like it's a HUD.  I might have to compromise somewhat to make it all work together.</p>
+
+			<p>I'm already mocking up my multi-column stuff.</p>
+		</section>
+		<footer>
+					
+		</footer>
+	</article>
+
+	<article>
+		<section>
+			<header><h1>A Particularly Long Post Title</h1></header>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+	
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+	
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+	
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+	
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+			</div>
+			<footer>
+					
+			</footer>
+		</section>
+		<div class="sidebar">
+			<span class="month">Oct</span>
+			<span class="date">13, 2010</span>
+			<span class="time">2:41 PM</span>
+			<aside>TL;DR<br/>a sidebar haiku<br/>to summarize when time's short<br/>how convenient</aside>
+		</div>
+	</article>
+
+	<article>
+		<section>
+			<header><h1>A Particularly Long Post Title</h1></header>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+	
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+			</div>
+			<footer>
+					
+			</footer>
+		</section>
+		<div class="sidebar">
+			<span class="month">Oct</span>
+			<span class="date">13, 2010</span>
+			<span class="time">2:41 PM</span>
+			<aside>TL;DR<br/>a sidebar haiku<br/>to summarize when time's short<br/>how convenient</aside>
+		</div>
+	</article>
+
+
+	<article>
+		<section>
+			<header><h1>A Particularly Long Post Title<h1></header>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+	
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+			</div>
+			<footer>
+					
+			</footer>
+		</section>
+		<div class="sidebar">
+			<span class="month">Oct</span>
+			<span class="date">13, 2010</span>
+			<span class="time">2:41 PM</span>
+			<aside>TL;DR<br/>a sidebar haiku<br/>to summarize when time's short<br/>how convenient</aside>
+		</div>
+	</article>
+</div>
+</body>
+</html>

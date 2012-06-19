@@ -1,0 +1,128 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Palatino";
+  font-size: 100%;
+  line-height: 1.5em;
+  background-image: url("http://www.mydistraction.net/Out/grid.php?w=24&h=24"); }
+
+header {
+  display: block;
+  letter-spacing: 2px;
+  -webkit-column-span: all;
+  -moz-column-span: all;
+  border: solid black 1px;
+  margin: -1px; }
+
+h1 {
+  font-size: 2em;
+  line-height: 1.5em;
+  margin: 0px;
+  font-weight: normal; }
+
+h2 {
+  font-size: 1.5em;
+  line-height: 2em;
+  margin: 0px;
+  font-weight: normal; }
+
+h3 {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0px; }
+
+h4 {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0px;
+  text-decoration: underline; }
+
+section {
+  -webkit-column-width: 24em;
+  -webkit-column-gap: 3em;
+  -moz-column-width: 24em;
+  -moz-column-gap: 3em;
+  padding: 1.5em; }
+
+#primaryNav {
+  -webkit-box-shadow: 0px 5px 10px #999999;
+  margin-bottom: 1em;
+  display: block;
+  font-size: 1.5em;
+  line-height: 2em;
+  height: 2em; }
+  #primaryNav ul {
+    list-style-type: none;
+    float: left;
+    margin: 0px; }
+  #primaryNav li {
+    float: left;
+    margin-right: 1em; }
+  #primaryNav a {
+    text-decoration: none;
+    color: black; }
+    #primaryNav a:hover {
+      color: #2277ee; }
+  #primaryNav #search {
+    float: right;
+    border: solid black 1px;
+    height: 25px; }
+    #primaryNav #search input {
+      height: 20px;
+      width: 180px;
+      padding: 0px; }
+
+.sidebar {
+  display: none;
+  text-align: center;
+  margin-right: 40px;
+  width: 180px;
+  height: 100%;
+  border: solid red 1px; }
+
+.month {
+  font-size: 48px;
+  line-height: 48px;
+  display: block;
+  letter-spacing: 2px; }
+
+.date {
+  display: block;
+  font-size: 22px;
+  line-height: 32px; }
+
+.time {
+  display: block;
+  font-size: 22px;
+  line-height: 32px; }
+
+.rotated {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg); }
+
+article {
+  clear: both; }
+  article img {
+    height: 144px; }
+  article img.small {
+    clear: both;
+    width: 50%;
+    float: left;
+    margin-right: 2%; }
+  article img.large {
+    width: 100%; }
+
+p {
+  margin: 0px;
+  margin-bottom: 1.5em; }
+
+#posts {
+  margin: auto; }
+
+aside {
+  margin-top: 16px;
+  font-style: italic;
+  text-align: center; }
