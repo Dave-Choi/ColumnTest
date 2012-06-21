@@ -78,7 +78,13 @@ article{
 			@include column-gap(3em);
 			//border: solid black 1px;
 			padding: $base-rhythm-unit;
+
+			p{
+				break-inside: avoid;
+			}
 		}
+
+
 	}
 }
 

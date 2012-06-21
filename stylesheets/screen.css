@@ -148,8 +148,12 @@ article section .copy {
   column-gap: 3em;
   padding: 1.5em;
 }
+/* line 82, ../sass/screen.scss */
+article section .copy p {
+  break-inside: avoid;
+}
 
-/* line 85, ../sass/screen.scss */
+/* line 91, ../sass/screen.scss */
 #primaryNav {
   -webkit-box-shadow: 0px 5px 10px #999999;
   -moz-box-shadow: 0px 5px 10px #999999;
@@ -164,28 +168,28 @@ article section .copy {
   top: 0px;
   left: 0px;
 }
-/* line 94, ../sass/screen.scss */
+/* line 100, ../sass/screen.scss */
 #primaryNav ul {
   text-align: center;
   list-style-type: none;
 }
-/* line 99, ../sass/screen.scss */
+/* line 105, ../sass/screen.scss */
 #primaryNav li {
   display: inline;
   margin-right: 1em;
   margin-left: 1em;
 }
-/* line 107, ../sass/screen.scss */
+/* line 113, ../sass/screen.scss */
 #primaryNav a {
   text-decoration: none;
   color: black;
 }
-/* line 110, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 #primaryNav a:hover {
   color: #2277ee;
 }
 
-/* line 116, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 .sidebar {
   display: none;
   text-align: center;
@@ -195,7 +199,7 @@ article section .copy {
   border: solid red 1px;
 }
 
-/* line 126, ../sass/screen.scss */
+/* line 132, ../sass/screen.scss */
 .month {
   font-size: 48px;
   line-height: 48px;
@@ -203,21 +207,21 @@ article section .copy {
   letter-spacing: 2px;
 }
 
-/* line 133, ../sass/screen.scss */
+/* line 139, ../sass/screen.scss */
 .date {
   display: block;
   font-size: 22px;
   line-height: 32px;
 }
 
-/* line 139, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 .time {
   display: block;
   font-size: 22px;
   line-height: 32px;
 }
 
-/* line 145, ../sass/screen.scss */
+/* line 151, ../sass/screen.scss */
 .rotated {
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
@@ -226,17 +230,17 @@ article section .copy {
   transform: rotate(-90deg);
 }
 
-/* line 153, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 p {
   margin-bottom: 1.5em;
 }
 
-/* line 157, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 #posts {
   margin: auto;
 }
 
-/* line 161, ../sass/screen.scss */
+/* line 167, ../sass/screen.scss */
 aside {
   margin-top: 16px;
   font-style: italic;
