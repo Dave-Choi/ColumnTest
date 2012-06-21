@@ -1,6 +1,165 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
 @import "compass/reset";
+@import "compass";
+@import "compass/layout/grid-background";
+@import "compass/layout/stretching";
+@import "compass/typography/lists/horizontal-list";
+
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+$accent-color: #2277ee;
+$primary-nav-height: 4.5em;
+
+@include establish-baseline;
+
+body{
+	font-family: "Palatino";
+	background-image: url("http://www.mydistraction.net/Out/grid.php?w=24&h=24");
+	margin-top: $primary-nav-height;
+}
+
+a{
+	color: $accent-color;
+	text-decoration: none;
+	&:hover{
+		text-decoration: underline;
+	}
+}
+
+#posts{
+	header{
+		display: block;
+		letter-spacing: 2px;
+
+		-webkit-column-span: all;
+		-moz-column-span: all;
+
+		//margin-bottom: $base-rhythm-unit;
+
+		h1{
+			@include adjust-font-size-to(32px);
+			font-weight: normal;
+		}
+
+		h2{
+			@include adjust-font-size-to(24px);
+			font-weight: normal;
+		}
+
+		h3{
+			@include adjust-font-size-to(16px);
+			font-weight: bold;
+		}
+
+		h4{	
+			@include adjust-font-size-to(16px);
+			text-decoration: underline;
+		}
+	}
+}
+
+article{
+	
+	padding: {
+		left: $base-rhythm-unit;
+		right: $base-rhythm-unit;
+	}
+	section{
+		margin:{
+			bottom: $base-rhythm-unit;
+		}
+
+		.copy{
+			/* 
+				This is a dumb hack that mostly addresses the fact that
+				Mozilla doesn't support column span yet. 
+			*/
+			@include column-width(24em);
+			@include column-gap(3em);
+			//border: solid black 1px;
+			padding: $base-rhythm-unit;
+		}
+	}
+}
+
+#primaryNav{
+	@include box-shadow(0px 5px 10px #999999);
+	@include adjust-font-size-to(24px);
+	@include stretch-x;
+	background-color: white;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+
+	ul{
+		text-align: center;
+		list-style-type: none;
+	}
+
+	li{
+		display: inline;
+		margin: {
+			right: 1em;
+			left: 1em;
+		}
+	}
+
+	a{
+		text-decoration: none;
+		color: black;
+		&:hover{
+			color: #2277ee;
+		}
+	}
+}
+
+.sidebar{
+	display: none;
+
+	text-align: center;
+	margin-right: 40px;
+	width: 180px;
+	height: 100%;
+	border: solid red 1px;
+}
+
+.month{
+	font-size: 48px;
+	line-height: 48px;
+	display: block;
+	letter-spacing: 2px;
+}
+
+.date{
+	display: block;
+	font-size: 22px;
+	line-height: 32px;
+}
+
+.time{
+	display: block;
+	font-size: 22px;
+	line-height: 32px;
+}
+
+.rotated{
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+}
+
+p{
+	@include margin-trailer();
+}
+
+#posts{
+	margin: auto;
+}
+
+aside{
+	margin-top: 16px;
+	font-style: italic;
+	text-align: center;
+}
