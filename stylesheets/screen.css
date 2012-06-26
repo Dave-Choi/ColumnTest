@@ -77,7 +77,6 @@ html > body {
 /* line 15, ../sass/screen.scss */
 body {
   font-family: "Palatino";
-  background-image: url("http://www.mydistraction.net/Out/grid.php?w=24&h=24");
   margin-top: 4.5em;
 }
 
@@ -91,36 +90,40 @@ a:hover {
   text-decoration: underline;
 }
 
-/* line 30, ../sass/screen.scss */
+/* line 29, ../sass/screen.scss */
+h1 {
+  font-size: 2em;
+  line-height: 1.5em;
+  font-weight: normal;
+}
+
+/* line 34, ../sass/screen.scss */
+h2 {
+  font-size: 1.5em;
+  line-height: 2em;
+  font-weight: normal;
+}
+
+/* line 39, ../sass/screen.scss */
+h3 {
+  font-size: 1em;
+  line-height: 1.5em;
+  font-weight: bold;
+}
+
+/* line 44, ../sass/screen.scss */
+h4 {
+  font-size: 1em;
+  line-height: 1.5em;
+  text-decoration: underline;
+}
+
+/* line 50, ../sass/screen.scss */
 #posts header {
   display: block;
   letter-spacing: 2px;
   -webkit-column-span: all;
   -moz-column-span: all;
-}
-/* line 39, ../sass/screen.scss */
-#posts header h1 {
-  font-size: 2em;
-  line-height: 1.5em;
-  font-weight: normal;
-}
-/* line 44, ../sass/screen.scss */
-#posts header h2 {
-  font-size: 1.5em;
-  line-height: 2em;
-  font-weight: normal;
-}
-/* line 49, ../sass/screen.scss */
-#posts header h3 {
-  font-size: 1em;
-  line-height: 1.5em;
-  font-weight: bold;
-}
-/* line 54, ../sass/screen.scss */
-#posts header h4 {
-  font-size: 1em;
-  line-height: 1.5em;
-  text-decoration: underline;
 }
 
 /* line 61, ../sass/screen.scss */
@@ -132,7 +135,12 @@ article {
 article section {
   margin-bottom: 1.5em;
 }
-/* line 72, ../sass/screen.scss */
+/* line 68, ../sass/screen.scss */
+article section header {
+  margin: auto;
+  text-align: center;
+}
+/* line 76, ../sass/screen.scss */
 article section .copy {
   /* 
   	This is a dumb hack that mostly addresses the fact that
@@ -146,20 +154,27 @@ article section .copy {
   -moz-column-gap: 3em;
   -o-column-gap: 3em;
   column-gap: 3em;
+  margin: auto;
   padding: 1.5em;
 }
-/* line 82, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
 article section .copy p {
   break-inside: avoid;
 }
+/* line 92, ../sass/screen.scss */
+article section .overflowing {
+  -webkit-column-width: auto;
+  -moz-column-width: auto;
+  -o-column-width: auto;
+  column-width: auto;
+  max-width: 33em;
+}
 
-/* line 91, ../sass/screen.scss */
-#primaryNav {
+/* line 101, ../sass/screen.scss */
+#mainHeader {
   -webkit-box-shadow: 0px 5px 10px #999999;
   -moz-box-shadow: 0px 5px 10px #999999;
   box-shadow: 0px 5px 10px #999999;
-  font-size: 1.5em;
-  line-height: 2em;
   position: absolute;
   left: 0;
   right: 0;
@@ -168,28 +183,43 @@ article section .copy p {
   top: 0px;
   left: 0px;
 }
-/* line 100, ../sass/screen.scss */
-#primaryNav ul {
+/* line 109, ../sass/screen.scss */
+#mainHeader #primaryNav {
+  font-size: 1.5em;
+  line-height: 2em;
+}
+/* line 111, ../sass/screen.scss */
+#mainHeader #primaryNav ul {
   text-align: center;
   list-style-type: none;
 }
-/* line 105, ../sass/screen.scss */
-#primaryNav li {
+/* line 116, ../sass/screen.scss */
+#mainHeader #primaryNav li {
   display: inline;
   margin-right: 1em;
   margin-left: 1em;
 }
-/* line 113, ../sass/screen.scss */
-#primaryNav a {
+/* line 124, ../sass/screen.scss */
+#mainHeader #primaryNav a {
   text-decoration: none;
   color: black;
 }
-/* line 116, ../sass/screen.scss */
-#primaryNav a:hover {
+/* line 127, ../sass/screen.scss */
+#mainHeader #primaryNav a:hover {
   color: #2277ee;
 }
+/* line 133, ../sass/screen.scss */
+#mainHeader #breadcrumbs {
+  text-align: center;
+}
+/* line 137, ../sass/screen.scss */
+#mainHeader #breadcrumbs h1, #mainHeader #breadcrumbs h2, #mainHeader #breadcrumbs h3, #mainHeader #breadcrumbs h4, #mainHeader #breadcrumbs h5, #mainHeader #breadcrumbs h6 {
+  display: inline;
+  margin-left: 0.75em;
+  margin-right: 0.75em;
+}
 
-/* line 122, ../sass/screen.scss */
+/* line 147, ../sass/screen.scss */
 .sidebar {
   display: none;
   text-align: center;
@@ -199,7 +229,7 @@ article section .copy p {
   border: solid red 1px;
 }
 
-/* line 132, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 .month {
   font-size: 48px;
   line-height: 48px;
@@ -207,21 +237,21 @@ article section .copy p {
   letter-spacing: 2px;
 }
 
-/* line 139, ../sass/screen.scss */
+/* line 164, ../sass/screen.scss */
 .date {
   display: block;
   font-size: 22px;
   line-height: 32px;
 }
 
-/* line 145, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 .time {
   display: block;
   font-size: 22px;
   line-height: 32px;
 }
 
-/* line 151, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 .rotated {
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
@@ -230,17 +260,17 @@ article section .copy p {
   transform: rotate(-90deg);
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 p {
   margin-bottom: 1.5em;
 }
 
-/* line 163, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 #posts {
   margin: auto;
 }
 
-/* line 167, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 aside {
   margin-top: 16px;
   font-style: italic;

@@ -7,16 +7,83 @@
   <!--[if IE]>
       <link href="stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <![endif]-->
+<script src="jquery-1.6.1.min.js"></script>  
+<!--
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+-->
+<script>
+
+function getAvailableHeight(){
+	console.log($("#mainHeader").height());
+	return $(window).height() - $("#mainHeader").height();
+
+}
+
+function fitColumns(){
+	/* 	
+		If the column set doesn't fit in the viewport all at once,
+		don't use columns, so you don't have to scroll up and down to read
+		one section.
+	*/
+	var viewportHeight = getAvailableHeight();
+	$("section .copy").removeClass("overflowing").filter(function(){
+		var height = $(this).height();
+		return height > viewportHeight;
+	}).addClass("overflowing");
+}
+
+function activeHeader(){
+	return $("#posts header").filter(function(){
+		if(window.scrollY == 0){
+			return false;
+		}
+		var $this = $(this);
+		var baseline = $this.offset().top;
+		var effectiveScrollPos = window.scrollY + $("#mainHeader").height();
+		return baseline < effectiveScrollPos;
+	}).last();
+}
+
+function headerTrail(source){
+	var buff = "";
+	var ancestors = $(source).parentsUntil("#posts").children("header").each(function(){
+			buff = this.innerHTML + buff;
+	});
+
+	//section.css("background-color", "gray");
+	//console.log(ancestors);
+	return buff;
+}
+
+function headerCrumbs(){
+	$(window).scroll(function(e){
+		var trail = "";
+		var lastHeader = activeHeader();
+		$("#breadcrumbs").html(headerTrail(lastHeader));
+	});
+}
+
+
+$(function(){
+	fitColumns();
+	$(window).resize(fitColumns);
+
+	headerCrumbs();
+});
+</script>
 </head>
 
 <body>
-<header>
+<header id="mainHeader">
 <nav id="primaryNav">
 	<ul>
 		<li><a href="#">Blog</a></li>
 		<li><a href="#">Hacks</a></li>
 		<li><a href="#">About</a></li>
 	</ul>
+</nav>
+<nav id="breadcrumbs">
+
 </nav>
 </header>
 
@@ -54,7 +121,7 @@
 					<div class="copy">
 						<p>Most blogs are presented in huge single columns, which may or may not be paginated (which is never done for the benefit of the user, but so that more ads can be served).  The problem is that the column is either too wide, or makes poor use of available space.</p>
 
-						<p>When text columns are too wide, it's difficult to read them.  Your eye focus goes waaaaay over to the right, and then has to go waaaay back to the left after you complete a line.  During that transition, it's easy to lose your vertical place, and start trying to read the wrong line.  This can interrupt your flow, and make your eyes have to bounce back and forth to resolve the problem, and is just generally shitty.  This is a really common problem when people just let text fill a container, or when column widths are determined by percentage of window width, with no max-width set.</p>
+						<p>When text columns are too wide, it's difficult to read them.  Your eye focus goes waaaaay over to the right, and then has to go waaaay back to the left after you complete a line.  During that transition, it's easy to lose your vertical place, and start trying to read the wrong line.  This can interrupt your flow, and make your eyes have to bounce back and forth to resolve the problem, and is just generally shitty.  This is a really common problem when people just let text fill an arbitrarily large container, or when column widths are determined by percentage of window width, with no max-width set.</p>
 
 						<p>When a max-width is set, the text is easy to read (assuming an appropriate width that makes each line about 11 words), but on wide displays, the layout just looks bad, and that can be distracting on its own.</p>
 					</div>
@@ -118,7 +185,7 @@
 				<div class="copy">
 					<p>A lot of blog posts show author and other publication information at the bottom of the post.  Pretty much 100% of the time, I need to know that stuff to decide if it's worth my time to read it.  It's very common to be looking for a solution to a technology problem, and have search results return blog posts.  The problem is that I may care who the author is, and I ABSOLUTELY care about when it was written.  I don't need a blog post from 2002 telling me about ... basically anything about web development.</p>
 
-					<p>This stuff should just always be at the top, and maybe always on screen, like the title.</p>
+					<p>This stuff should just always be at the top and prominent, because it's at least as important as the title.  Scrolling around to find publication dates is probably like the most common thing I do besides actually reading the articles.</p>
 				</div>
 			</section>
 
