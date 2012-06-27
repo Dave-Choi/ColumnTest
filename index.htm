@@ -12,7 +12,6 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 -->
 <script>
-
 function getAvailableHeight(){
 	console.log($("#mainHeader").height());
 	return $(window).height() - $("#mainHeader").height();
@@ -63,12 +62,50 @@ function headerCrumbs(){
 	});
 }
 
+function progressSection(progressElement){
+	return ($(progressElement).parents("section").eq(0));
+}
+
+function effectiveScrollPos(){
+	//return window.scrollY + $("#mainHeader").height();
+	return window.scrollY + window.innerHeight;
+}
+
+function scrollPercentage(section){
+	// The progress widget will handle underflow and overflow, so don't need to
+	// be that careful about output being negative or over 100%
+	var scrollPos = effectiveScrollPos();
+	var $section = $(section);
+
+	var top = $section.offset().top;
+	var height = $section.height();
+
+	return (scrollPos-top)/height;
+
+}
+
+function progressBars(){
+	//$("header :header").parent().prepend('<div>').append('<br /><progress max="1" value="0"></progress></div>');
+
+	$("header :header").parent().each(function(){
+		$(this).html('<div class="titleBlock">' + $(this).html() + '<progress max="1" value="0"></progress></div>');
+	});
+
+	$(window).scroll(function(){
+		$("#posts progress").each(function(){
+			var section = progressSection(this);
+			this.value = scrollPercentage(section);
+			console.log(this.value);
+		});
+	});	
+}
 
 $(function(){
 	fitColumns();
 	$(window).resize(fitColumns);
 
 	headerCrumbs();
+	progressBars();
 });
 </script>
 </head>
@@ -98,9 +135,11 @@ $(function(){
 
 				<p>There are a few things that really struck me as applicable to the problems I've had with getting things done.  The really big one is trying to be perfect.  This has been a big problem with my development of this site, and why it's been frozen for years.  After a certain point, I wasn't just improving one thing or another, or throwing together something that might suck.  I was trying to design this monolithic perfect thing.</p>
 
+				<p>I wanted to crap out code that looked like the stuff other people wrote and had already refactored dozens of times.</p>
+
 				<p>What reading that book really made me mindful of is that mediocrity is a necessary step along the path to greatness.  I will have to make shit versions before I get to where I want to be.  I used to not be afraid of making those shit versions, but after a certain point of feeling like I should know what I'm doing, it seemed like it would be too embarassing to release them.</p>
 
-				<p>But great work is done in drafts.</p>
+				<p>But great work is done in drafts, and feedback is a critical part of the design process.</p>
 
 				<p>I'm still working on these single page JS projects, but I wanted to start thinking about the environment in which I'm going to want to present them.</p>
 

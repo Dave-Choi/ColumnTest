@@ -18,12 +18,41 @@ body{
 	margin-top: $primary-nav-height;
 }
 
+.titleBlock{
+	margin: {
+		left: $base-rhythm-unit/2;
+		right: $base-rhythm-unit/2;
+	}
+
+	progress{
+		display: none;
+		@include appearance(none);
+		height: 2px;
+		margin: -1px;
+		color: blue;
+		background-color: gray;
+		border: none;
+	}
+
+	progress::-webkit-progress-value{
+		background: $accent-color;
+	}
+
+	progress::-webkit-progress-bar{
+		background: #eeeeee;
+	}
+}
+
 a{
 	color: $accent-color;
 	text-decoration: none;
 	&:hover{
 		text-decoration: underline;
 	}
+}
+
+#{headings()}{
+	
 }
 
 h1{
@@ -133,13 +162,21 @@ article{
 	#breadcrumbs{
 		text-align: center;
 
-
-		#{headings()}{
-			display: inline;
+		.titleBlock{
+			display: inline-block;
+			//height: $base-rhythm-unit * 2;
+			//float: left;
+	
 			margin: {
 				left: $base-rhythm-unit/2;
 				right: $base-rhythm-unit/2;
+				bottom: $base-rhythm-unit;
 			}
+		}
+
+		progress{
+			display: block;
+			width: 100%;
 		}
 	}
 }
