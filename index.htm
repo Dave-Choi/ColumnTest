@@ -13,8 +13,8 @@
 -->
 <script>
 function getAvailableHeight(){
-	console.log($("#mainHeader").height());
-	return $(window).height() - $("#mainHeader").height();
+	//40 is just to account for comfortable padding
+	return $(window).height() - $("#mainHeader").height() - 40;
 
 }
 
@@ -23,12 +23,18 @@ function fitColumns(){
 		If the column set doesn't fit in the viewport all at once,
 		don't use columns, so you don't have to scroll up and down to read
 		one section.
+
+		If the content of a section is very short, don't bother dividing into
+		columns.  It just makes it disjointed and harder to read.
 	*/
 	var viewportHeight = getAvailableHeight();
-	$("section .copy").removeClass("overflowing").filter(function(){
+	var singleColClass = "singleCol"
+	$("section .copy").removeClass(singleColClass).filter(function(){
 		var height = $(this).height();
-		return height > viewportHeight;
-	}).addClass("overflowing");
+		var tooTall = height > viewportHeight;
+		var tooShort = height < 200;
+		return tooTall || tooShort;
+	}).addClass(singleColClass);
 }
 
 function activeHeader(){
@@ -55,11 +61,13 @@ function headerTrail(source){
 }
 
 function headerCrumbs(){
-	$(window).scroll(function(e){
+	var updateBreadcrumbs = function(){
 		var trail = "";
 		var lastHeader = activeHeader();
 		$("#breadcrumbs").html(headerTrail(lastHeader));
-	});
+	};
+	$(window).scroll(updateBreadcrumbs);
+	$(window).resize(updateBreadcrumbs);
 }
 
 function progressSection(progressElement){
@@ -91,18 +99,21 @@ function progressBars(){
 		$(this).html('<div class="titleBlock">' + $(this).html() + '<progress max="1" value="0"></progress></div>');
 	});
 
-	$(window).scroll(function(){
+	var updateProgressBars = function(){
 		$("#posts progress").each(function(){
 			var section = progressSection(this);
 			this.value = scrollPercentage(section);
-			console.log(this.value);
 		});
-	});	
+	};
+
+	$(window).scroll(updateProgressBars);
+	$(window).resize(updateProgressBars);
 }
 
 $(function(){
 	fitColumns();
-	$(window).resize(fitColumns);
+	console.log($(window).resize(fitColumns));
+	//$(window).scroll(fitColumns);
 
 	headerCrumbs();
 	progressBars();
@@ -293,7 +304,7 @@ $(function(){
 
 	<article>
 		<section>
-			<header><h1>A Particularly Long Post Title</h1></header>
+			<header><h1>Test Title 2</h1></header>
 				<div class="copy">
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
 					
@@ -317,7 +328,7 @@ $(function(){
 
 	<article>
 		<section>
-			<header><h1>A Particularly Long Post Title<h1></header>
+			<header><h1>Test Title 1<h1></header>
 			<div class="copy">
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
 				
